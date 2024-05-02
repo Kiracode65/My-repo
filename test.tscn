@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://da1m2au54pl80"]
+
+[ext_resource type="Script" path="res://main_scene.gd" id="1_np7xb"]
+[ext_resource type="Script" path="res://Label.gd" id="2_1jn7n"]
+[ext_resource type="Script" path="res://node button.gd" id="3_ih661"]
+[ext_resource type="Script" path="res://HSlider.gd" id="4_41ft3"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="5_hmbel"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vljtl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qcb2n"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_milho"]
+specular_color = Color(0.940551, 0.838605, 0.988697, 1)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(225, 171)
+continuous_cd = 1
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="main scene" type="Node2D" parent="."]
+position = Vector2(-145, -19)
+script = ExtResource("1_np7xb")
+
+[node name="control" type="Control" parent="main scene"]
+material = SubResource("ShaderMaterial_vljtl")
+layout_mode = 3
+anchors_preset = 0
+offset_left = -15.0
+offset_top = 136.0
+offset_right = 1144.0
+offset_bottom = 643.0
+
+[node name="Label" type="Label" parent="main scene/control"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 59.0
+offset_right = 363.0
+offset_bottom = 104.0
+text = "0"
+script = ExtResource("2_1jn7n")
+
+[node name="node button" type="Button" parent="main scene"]
+show_behind_parent = true
+top_level = true
+offset_left = 134.0
+offset_top = 469.0
+offset_right = 321.0
+offset_bottom = 546.0
+toggle_mode = true
+button_pressed = true
+text = "Press to release"
+script = ExtResource("3_ih661")
+
+[node name="HSlider" type="HSlider" parent="main scene"]
+show_behind_parent = true
+top_level = true
+offset_left = 174.0
+offset_top = 376.0
+offset_right = 375.0
+offset_bottom = 392.0
+script = ExtResource("4_41ft3")
+
+[node name="Sprite2D" type="Sprite2D" parent="main scene"]
+material = SubResource("CanvasItemMaterial_qcb2n")
+position = Vector2(572.25, 555)
+scale = Vector2(1145.5, 180)
+texture = SubResource("CanvasTexture_milho")
+script = ExtResource("5_hmbel")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
